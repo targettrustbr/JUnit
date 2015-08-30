@@ -1,0 +1,64 @@
+Exercício 4:
+
+Na classe de teste AnimalRNTest do projeto PetJUnit, adicionar testes para o método com.targettrust.servico.AnimalRN.listarAnimaisPorEspecie(Especie) usando Mock. Deve-se criar uma lista com vários animais de diferentes espécies e passar para o mock com algo semelhante a:
+
+	Mockito.when(animalDAOMock.listarAnimaisCadastrados()).thenReturn(animaisParaMock);
+
+Após isso invocar o método listarAnimaisPorEspecie informando uma das espécies e testando se o resultado confere.
+
+Resolução:
+
+    @Test
+    public void testAnimaisDaEspecieAves() throws ValidacaoException{
+	//Crio uma lista de animais para usar como base.
+	Animal meg = new Animal("Meg", 10, 13, true, Especie.Mamíferos);
+	Animal loro = new Animal("Loro", 10, 13, true, Especie.Aves);
+	Animal rex = new Animal("Rex", 10, 13, true, Especie.Répteis);
+	Animal bob = new Animal("Bob", 10, 13, true, Especie.Mamíferos);
+	Animal nemo = new Animal("Nemo", 10, 13, true, Especie.Peixes);
+
+	List<Animal> animaisParaMock = new ArrayList<Animal>();
+	animaisParaMock.add(meg);
+	animaisParaMock.add(loro);
+	animaisParaMock.add(bob);
+	animaisParaMock.add(rex);
+	animaisParaMock.add(nemo);
+
+	//Digo que a lista retornada do DAO deve ser essa criada aqui.
+	Mockito.when(animalDAOMock.listarAnimaisCadastrados()).thenReturn(animaisParaMock);
+	
+	//Executo.
+	List<Animal> animaisEncontrados = animalRN.listarAnimaisPorEspecie(Especie.Aves);
+	
+	//Testo
+	Assert.assertThat(animaisEncontrados, CoreMatchers.hasItems(loro));
+    }
+
+    @Test
+    public void testAnimaisDaEspecieMamiferos() throws ValidacaoException{
+
+	//Crio uma lista de animais para usar como base.
+	Animal meg = new Animal("Meg", 10, 13, true, Especie.Mamíferos);
+	Animal loro = new Animal("Loro", 10, 13, true, Especie.Aves);
+	Animal rex = new Animal("Rex", 10, 13, true, Especie.Répteis);
+	Animal bob = new Animal("Bob", 10, 13, true, Especie.Mamíferos);
+	Animal nemo = new Animal("Nemo", 10, 13, true, Especie.Peixes);
+
+	List<Animal> animaisParaMock = new ArrayList<Animal>();
+	animaisParaMock.add(meg);
+	animaisParaMock.add(loro);
+	animaisParaMock.add(bob);
+	animaisParaMock.add(rex);
+	animaisParaMock.add(nemo);
+
+	//Digo que a lista retornada do DAO deve ser essa criada aqui.
+	Mockito.when(animalDAOMock.listarAnimaisCadastrados()).thenReturn(animaisParaMock);
+	
+	//Executo.
+	List<Animal> animaisEncontrados = animalRN.listarAnimaisPorEspecie(Especie.Mamíferos);
+	
+	//Testo
+	Assert.assertThat(animaisEncontrados, CoreMatchers.hasItems(meg, bob));
+    }
+
+

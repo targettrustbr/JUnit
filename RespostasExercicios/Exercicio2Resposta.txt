@@ -1,0 +1,30 @@
+Exercício 2:
+
+Na classe de teste AgendaTest do projeto PetJUnit, adicionar testes para o método com.targettrust.model.Agenda.consultarPorApelido(String) onde basta informar o apelido do usuário para retornar a consulta relacionada a ele.
+
+Para o assert desta vez utilizaremos matchers, tal como:
+
+Assert.assertThat(consultaRetornada, CoreMatchers.anyOf(CoreMatchers.notNullValue()));
+
+Resolução:
+
+    @Test
+    public void testConsultaPorNome() {
+	Consulta consultaInclusao = new Consulta(animalExemplo, new Date(), false, 70F);
+	agenda.incluiAgenda(consultaInclusao);
+
+	Consulta consultaRetornada = agenda.consultarPorApelido("Ruff");
+	
+	Assert.assertThat(consultaRetornada, CoreMatchers.anyOf(CoreMatchers.notNullValue()));
+    }
+
+    @Test
+    public void testConsultaPorNomeApelido() {
+	Consulta consultaInclusao = new Consulta(animalExemplo, new Date(), false, 70F);
+	agenda.incluiAgenda(consultaInclusao);
+
+	Consulta consultaRetornada = agenda.consultarPorApelido("Ruff");
+	
+	Assert.assertThat(consultaRetornada.getAnimal().getApelido(), CoreMatchers.is("Ruff"));
+    }
+

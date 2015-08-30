@@ -1,0 +1,16 @@
+Exercício 3:
+
+Na classe de teste AgendaTest do projeto PetJUnit, adicionar testes para o método com.targettrust.model.Agenda.incluiAgenda(Agenda) mas deixando o primeiro parâmetro NULO correspondente ao animal. Desta forma:
+	agenda.incluiAgenda(new Consulta(null, new Date(), false, 70F));
+Assim uma exceção será disparada, trate para que o teste passe, conforme os exemplos vistos anteriormente.
+
+Este exercício nem precisa de assert, uma vez que uma exceção será disparada, se ocorrer conforme esperado, e o processamento irá parar.
+
+Resolução:
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testIncluiSemNome() {
+	Consulta consultaInclusao = new Consulta(null, new Date(), false, 70F);
+	agenda.incluiAgenda(consultaInclusao);
+    }
+

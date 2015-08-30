@@ -1,0 +1,21 @@
+Exercício 1:
+
+Na classe de testes FuncionarioTest do projeto PetJUnit, adicionar testes para o método com.targettrust.model.Funcionario.getSalario(float valorHora) informando diferentes valores de valor hora, como 50.
+
+Para o assert, usar um assertEquals como este:
+
+Assert.assertEquals(salarioTotalCalculado, salarioCorreto , 1);
+
+Resolução:
+
+    @Test
+    public void testSalarioValorHora50() {
+	funcionario.setSalario(180);//horas
+	
+	float salarioTotal = funcionario.getSalario(50);
+	
+	//Salario corresponde as horas trabalhadas (10) * valor hora do funcionario
+	double salarioCorreto = (180 * 50);
+	Assert.assertEquals(salarioTotal, salarioCorreto , 1);
+    }
+
