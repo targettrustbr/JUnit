@@ -11,11 +11,32 @@ public class Agenda {
     }
 
     public void incluiAgenda(Consulta c) {
+	if(c.getAnimal() == null){
+	    throw new IllegalArgumentException("Animal deve ser informado para um consulta");
+	}
+	
 	if (consultas.size() < 5) {
 	    consultas.add(c);
 	    System.out.println("Adicionado a Consulta para: " + c.getAnimal().getApelido());
 	} else
 	    System.out.println("**----------Consultas atingiram o limite de 5 datas");
+    }
+
+    public Consulta consultarPorApelido(String apelido) {
+
+	if(apelido == null){
+	    throw new IllegalArgumentException("Apelido deve ser informado.");
+	}
+
+	for (Consulta consulta : consultas) {
+	    if(consulta != null && consulta.getAnimal() != null){
+		if(apelido.equals(consulta.getAnimal().getApelido())){
+		    return consulta;
+		}
+	    }
+	}
+	
+	return null;
     }
 
     /**

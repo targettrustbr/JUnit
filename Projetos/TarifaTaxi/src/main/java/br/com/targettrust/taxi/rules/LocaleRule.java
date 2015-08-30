@@ -27,8 +27,9 @@ public class LocaleRule implements TestRule {
 
 		try {
 		    base.evaluate();
+		    System.out.println("Success: " + description.getMethodName());
 		} catch (Throwable e) {
-		    System.out.println("Falha ao executar método:" + description.getMethodName());
+		    System.err.println("Fail: " + description.getMethodName());
 		    throw e;
 
 		} finally {

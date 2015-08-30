@@ -10,12 +10,13 @@ import com.targettrust.valida.ValidacaoException;
  * 
  */
 public class Animal {
+
     private Especie especie;
     private String apelido;
     private float peso;
     private int altura;
     private boolean vivo;
-
+    
     public Animal() {
     }
 
@@ -91,7 +92,6 @@ public class Animal {
 	if (parametroAltura < 0)
 	    throw new ValidacaoException("Altura Invalido, tem que ser maior que 0cm");
 	this.altura = parametroAltura;
-
     }
 
     /**
@@ -116,5 +116,4 @@ public class Animal {
     public void setEspecie(Especie parametroEspecie) {
 	this.especie = parametroEspecie;
     }
-
 }
