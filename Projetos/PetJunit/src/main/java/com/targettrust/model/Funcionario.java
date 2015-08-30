@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Funcionario extends Pessoa {
     protected float salario;
-    private final float VALOR_HORA = 15f;
+    public final static float VALOR_HORA = 15f;
     private String cargo;
     private Funcionario gerente;
 
